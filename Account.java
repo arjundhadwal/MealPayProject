@@ -14,9 +14,27 @@ public class Account {
         balance = 0;
     }
 
+    //methods
+
     public void makePurchase(int myMonth, int myDay, double myAmount){
         Transaction t = new Transaction(myMonth, myDay, myAmount, thisID);
         transactions.add(t);
+        balance += myAmount;
+    }
+
+    public String toString(){
+        return ("Name : "+name+" Balance: "+balance+" ID Number: "+thisID);
+    }
+
+    public static void listAllTransactions(){
+        System.out.println("Listing all transactions");
+        for(int i = 0; i<transactions.size(); i++){
+            System.out.println(transactions.get(i).toString());
+        }
+    }
+
+    public ArrayList<Transaction> getTransactionList(){
+        return transactions;
     }
     
 }
