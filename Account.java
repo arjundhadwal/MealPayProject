@@ -13,5 +13,10 @@ public class Account {
         name = myName;
         balance = 0;
     }
+
+    public void makePurchase(int myMonth, int myDay, double myAmount){
+        Transaction t = new Transaction(myMonth, myDay, myAmount, thisID);
+        transactions.add(t);
+    }
     
 }
