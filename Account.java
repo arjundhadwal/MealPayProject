@@ -16,10 +16,16 @@ public class Account {
 
     //methods
 
-    public void makePurchase(int myMonth, int myDay, double myAmount){
+    public void makeTransaction(int myMonth, int myDay, double myAmount){
         Transaction t = new Transaction(myMonth, myDay, myAmount, thisID);
         transactions.add(t);
         balance += myAmount;
+    }
+
+    public void buyLunch(int myMonth, int myDay){
+        Transaction q = new Transaction(myMonth, myDay, -7.00, thisID);
+        transactions.add(q);
+        balance -=7.00;
     }
 
     public String toString(){
@@ -31,6 +37,16 @@ public class Account {
         for(int i = 0; i<transactions.size(); i++){
             System.out.println(transactions.get(i).toString());
         }
+    }
+
+    public static ArrayList<Transaction> getTransactionsByDate(int month, int day){
+        ArrayList<Transaction> givenDay = new ArrayList<Transaction>();
+        for(Transaction t: transactions){
+            if((month == t.getMonth()) && (day == t.getDay())){
+                givenDay.add(t);
+            }
+        }
+        return givenDay;
     }
 
     public ArrayList<Transaction> getTransactionList(){

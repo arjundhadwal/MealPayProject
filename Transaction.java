@@ -29,6 +29,6 @@ public int getPurchaserID(){
 }
 
 public String toString(){
-    return ("("+month+"/"+day+"), Amount: "+amount+" Purchaser ID: "+studentIDNum);
+    return ("("+month+"/"+day+"), Amount: "+amount+" ID: "+studentIDNum);
 }
 }
