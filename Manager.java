@@ -13,6 +13,28 @@ public class Manager {
         accts.add(a);
         System.out.println("Account added");
     }
+    public String transactionsByDay(int month, int day){
+        String s = "";
+        for(Account a: accts){
+            s += a.getAcctName();
+            for(Transaction tr: a.getMyTransactions()){
+                s += tr.toString();
+                s += "\n";
+            }
+            s += "\n";
+        }
+        return s;
+    }
 
-    
-}
+    public String listNegativeBalanceAccts(){
+        String s = "";
+        for(Account a: accts){
+            if(a.getBalance() < 0){
+                s+=a.getAcctName();
+                s+= " ";
+            }
+            }
+            return s;
+        }
+    }
+

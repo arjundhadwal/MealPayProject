@@ -49,8 +49,22 @@ public class Account {
         return givenDay;
     }
 
-    public ArrayList<Transaction> getTransactionList(){
-        return transactions;
+    public String getAcctName(){
+        return name;
+    }
+
+    public ArrayList<Transaction> getMyTransactions(){
+        ArrayList<Transaction> myTransactions = new ArrayList<Transaction>();
+        for(Transaction t: transactions){
+            if(t.getPurchaserID() == thisID){
+                myTransactions.add(t);
+            }
+        }
+        return myTransactions;
+    }
+
+    public double getBalance(){
+        return balance;
     }
     
 }
