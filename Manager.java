@@ -11,7 +11,7 @@ public class Manager {
     public void addAccount(String name){
         Account a = new Account(name);
         accts.add(a);
-        System.out.println("Account added");
+        System.out.println("Account "+name+" added");
     }
     public String transactionsByDay(int month, int day){
         String s = "";
@@ -30,11 +30,25 @@ public class Manager {
         String s = "";
         for(Account a: accts){
             if(a.getBalance() < 0){
-                s+=a.getAcctName();
-                s+= " ";
+                s+=a.toString();
+                s+= "\n";
             }
             }
             return s;
         }
+        public void printAllAccounts(){
+            for(Account a: accts){
+                System.out.println(a.toString());
+            }
+        }
+
+        public void chargeLunch(int ID, int month, int day){
+            accts.get(ID).buyLunch(month, day);
+        }
+
+        public void addFunds(int ID, int month, int day, double myAmount){
+            accts.get(ID).makeTransaction(month, day, myAmount);
+        }
     }
+
 
