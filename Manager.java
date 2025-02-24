@@ -13,15 +13,15 @@ public class Manager {
         accts.add(a);
         System.out.println("Account "+name+" added");
     }
+
     public String transactionsByDay(int month, int day){
         String s = "";
-        for(Account a: accts){
-            s += a.getAcctName();
-            for(Transaction tr: a.getMyTransactions()){
-                s += tr.toString();
-                s += "\n";
-            }
-            s += "\n";
+        ArrayList<Transaction> tList = Account.getTransactionsByDate(month, day); //reference the file
+        for(Transaction t: tList){
+        s+=t.toString();
+        s+=" by ";
+        s+=getAccount(t.getPurchaserID()).getAcctName();
+        s+="\n";
         }
         return s;
     }
@@ -48,6 +48,22 @@ public class Manager {
 
         public void addFunds(int ID, int month, int day, double myAmount){
             accts.get(ID).makeTransaction(month, day, myAmount);
+        }
+
+        public Account getAccount(int ID){
+            return accts.get(ID);
+        }
+
+        public String getAccountTransactions(int ID){
+            String s = " ";
+            s+=getAccount(ID).getAcctName();
+            s+= " ";
+            ArrayList<Transaction> trList = getAccount(ID).getMyTransactions();
+            for(Transaction tr:trList){
+                s+=tr.toString();
+                s+="\n";
+            }
+            return s;
         }
     }
 

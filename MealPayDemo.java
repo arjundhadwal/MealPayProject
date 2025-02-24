@@ -16,8 +16,8 @@ public class MealPayDemo {
         spaceLine();
         System.out.println("Adding funds to all accounts");
         MealPaySystem.addFunds(0, 2, 23, 20.00);
-        MealPaySystem.addFunds(1, 2, 23, 175.00);
-        MealPaySystem.addFunds(2, 2, 23 , 35000.00);
+        MealPaySystem.addFunds(1, 2, 24, 175.00);
+        MealPaySystem.addFunds(2, 2, 25 , 35000.00);
         MealPaySystem.addFunds(3, 2, 23, 35.00);
         spaceLine();
         System.out.println("Buying lunch");
@@ -37,7 +37,21 @@ public class MealPayDemo {
         MealPaySystem.chargeLunch(3, 2, 24);
         MealPaySystem.chargeLunch(3, 2, 25);
         spaceLine();
-        System.out.println("Transactions made. Displaying students with negative balances: ");
+        System.out.println("Transactions made. Showing transactions per student");
+        System.out.println(MealPaySystem.getAccountTransactions(0));
+        System.out.println(MealPaySystem.getAccountTransactions(1));
+        //System.out.println(MealPaySystem.getAccountTransactions(2)); This will take up the whole terminal
+        System.out.println(MealPaySystem.getAccountTransactions(3));
+        System.out.println("Displaying students with negative balances: ");
+        System.out.println(MealPaySystem.listNegativeBalanceAccts());
+        spaceLine();
+        System.out.println("Retrieving account with ID 2");
+        System.out.println(MealPaySystem.getAccount(2));
+        spaceLine();
+        System.out.println("Showing all transactions on 2/25");
+        System.out.println(MealPaySystem.transactionsByDay(2, 25));
+        spaceLine();
+        System.out.println("Implementation test complete. Meal Pay System ready.");
         
     }
 
